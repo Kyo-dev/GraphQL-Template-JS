@@ -1,0 +1,2 @@
+# GraphQL-Template
+JS
