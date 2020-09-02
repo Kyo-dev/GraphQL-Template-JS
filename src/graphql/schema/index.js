@@ -3,6 +3,10 @@ module.exports = buildSchema(`
     type Ping{
         pong: String!
     }
+    input inputPDF{
+        name: String
+        path: String
+    }
     type User{
         _id: ID!
         username: String!
@@ -20,17 +24,18 @@ module.exports = buildSchema(`
         email: String
         password: String!
     }
+    type Error {
+        path: String!
+        message: String!
+    }
     type RootQuery {
         signIn(userInput: UserInput): AuthData!
         pingWithoutAuth: Ping!
         pingWithAuth: Ping!
+        upFile(inputpdf: inputPDF): Ping
     }
     type RootMutation{
         newUser(userInput: UserInput!): User
-    }
-    type Error {
-        path: String!
-        message: String!
     }
     schema{
         query: RootQuery
